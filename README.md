@@ -1,5 +1,6 @@
 # Brawl-Stars-ScidToken
 Just an easy scid token grabber for brawl stars that sent data to a TCP
+
 // brawl stars scid token grabber template by Kxrimmmm
 Java.perform(function () {
     var IdAccount = Java.use("com.supercell.id.scid_plugin.IdAccount");
