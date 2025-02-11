@@ -25,7 +25,7 @@ Java.perform(function () {
         var BufferedWriter = Java.use("java.io.BufferedWriter");
         var OutputStreamWriter = Java.use("java.io.OutputStreamWriter");
 
-        var serverAddress = "YOUR PORT"; // Change this to your TCP server's address
+        var serverAddress = "YOUR ADDRESS"; // Change this to your TCP server's address
         var serverPort YOUR PORT; // Change this to your TCP server's port
 
         // Create socket connection to the server
