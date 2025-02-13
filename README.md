@@ -60,6 +60,7 @@ Java.perform(function () {
 ```
 Full Script
 ```javascript
+//made by kxrimmmm
 Java.perform(function () {
     var IdAccount = Java.use("com.supercell.id.scid_plugin.IdAccount");
 
